@@ -51,13 +51,32 @@ public class Robots {
 		y = this.posY;
 	}*/
 	
-	public String getPosition(){
-		return "(" + this.posX + ", " + this.posY + ")";
+	public int getPosX(){
+		return this.posX;
+	}
+	
+	public int getPosY(){
+		return this.posY;
 	}
 
-	public void move (int x, int y){
-		this.posX = x;
-		this.posY = y;
+	public void move (int speed){
+		if(this.orientation == 0){
+			//add speed to y position
+			this.posY = this.posY + speed;
+		}
+		else if(this.orientation == 180){
+			//Subtract speed from y position
+			this.posY = this.posY - speed;
+		}
+		else if(this.orientation == 90){
+			//add speed to x position
+			this.posX = this.posX + speed;
+		}
+		else{
+			//assume orientation is 270, subtract speed from x position
+			this.posX = this.posX - speed;
+		}
+		
 	}
 	
 	public void changeOrientation(int rotate){
@@ -99,23 +118,32 @@ public class Robots {
 	}
 	
 	public String toString(){
-		return "The robot " + name + " is at position " + this.getPosition() + ", is facing " + facing() + ", with a speed of " + getSpeed();
+		return "The robot " + name + " is at position (" + this.getPosX() + "," + this.getPosY() +"), and is facing " + facing();
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Robots bob = new Robots("bob", 3, 2, 5, 90);
 		
-		//need to fix this, re-watch the video
-		bob.getPosition();
-		System.out.println(bob.getPosition());
-		
-		bob.toString();
 		System.out.println(bob.toString());
 		
-		Robots susan = new Robots ("susan", 5, 8, 6, 180);
+		bob.move(6);
 		
-		System.out.println(bob.distance(2, 5));
+		System.out.println(bob.toString());
+		System.out.println("Bob will no change orientation to face South and move at a speed of 7");
+		
+		bob.changeOrientation(90);
+		bob.move(7);
+		
+		System.out.println(bob.toString());
+		
+		System.out.println("bob will now change orientation to face west, and move at speed of 8");
+		
+		bob.changeOrientation(90);
+		bob.move(8);
+		System.out.println(bob.toString());
+		
+		
 		
 	}
 
