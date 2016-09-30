@@ -72,7 +72,6 @@ public class Fractions {
 			largest = fraction.getNum();
 		}
 		
-		System.out.println(largest);
 		//find largest number that divides num and denom evenly
 		int gcd = 0;
 		for (int i = largest; i>=2; i--){
@@ -80,7 +79,8 @@ public class Fractions {
 				gcd = i;
 				break;
 			}
-			System.out.println(gcd);
+		}
+			
 			//divide num and denom by gcd
 			//Need to figure out why the gcd isn't getting reset from above.
 			if (gcd != 0){
@@ -88,11 +88,9 @@ public class Fractions {
 				int newDenom = fraction.getDenom() / gcd;
 				return newNum + "/" + newDenom;
 			}
-			
-		}
+				
 		return fraction.getNum() + "/" + fraction.getDenom();
-		
-		
+			
 	}
 
 
@@ -115,6 +113,11 @@ public class Fractions {
 		System.out.println(fract1.add(fract1, fract2));
 		
 		System.out.println(fract2.simplify(fract2));
+		
+		Fractions fract3 = new Fractions(5,25);
+		System.out.println(fract3);
+		
+		
 		
 
 
