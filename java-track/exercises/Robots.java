@@ -123,7 +123,7 @@ public class Robots {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Robots bob = new Robots("bob", 3, 2, 5, 90);
+		Robots bob = new Robots("bob", 3, 2, 5, 0);
 		
 		System.out.println(bob.toString());
 		
@@ -131,17 +131,6 @@ public class Robots {
 		
 		System.out.println(bob.toString());
 		System.out.println("Bob will no change orientation to face South and move at a speed of 7");
-		
-		bob.changeOrientation(90);
-		bob.move(7);
-		
-		System.out.println(bob.toString());
-		
-		System.out.println("bob will now change orientation to face west, and move at speed of 8");
-		
-		bob.changeOrientation(90);
-		bob.move(8);
-		System.out.println(bob.toString());
 		
 		
 		
