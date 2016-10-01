@@ -35,5 +35,37 @@ public class RobotsTest {
 		c.move(6);
 		assertTrue("The Y pos is " + c.getPosY() + " while it should be -4", c.getPosY() == -4);
 	}
+	
+	@Test
+	public void testChangeOrient1() {
+		Robots c = new Robots("c", 3, 2, 5, 0);
+		assertTrue(c.getOrientation() == 0);
+		c.changeOrientation(90);
+		assertTrue("The new orientation is " + c.getOrientation() + " while it should be 90", c.getOrientation() == 90);
+	}
 
+	@Test
+	public void testChangeOrient2() {
+		Robots c = new Robots("c", 3, 2, 5, 270);
+		assertTrue(c.getOrientation() == 270);
+		c.changeOrientation(90);
+		assertTrue("The new orientation is " + c.getOrientation() + " while it should be 0", c.getOrientation() == 0);
+	}
+	
+	@Test
+	public void testChangeOrient3() {
+		Robots c = new Robots("c", 3, 2, 5, 0);
+		assertTrue(c.getOrientation() == 0);
+		c.changeOrientation(-90);
+		assertTrue("The new orientation is " + c.getOrientation() + " while it should be 270", c.getOrientation() == 270);
+	}
+	
+	@Test
+	public void testChangeOrient4() {
+		Robots c = new Robots("c", 3, 2, 5, 180);
+		assertTrue(c.getOrientation() == 180);
+		c.changeOrientation(-90);
+		assertTrue("The new orientation is " + c.getOrientation() + " while it should be 90", c.getOrientation() == 90);
+	}
+	
 }
