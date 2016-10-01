@@ -127,12 +127,13 @@ public class Robots {
 		
 		System.out.println(bob.toString());
 		
-		bob.move(6);
+		
 		
 		System.out.println(bob.toString());
 		System.out.println("Bob will no change orientation to face South and move at a speed of 7");
 		
 		
+		System.out.println("distance is " + bob.distance(5, 9));
 		
 	}
 

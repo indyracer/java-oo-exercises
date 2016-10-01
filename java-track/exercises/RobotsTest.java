@@ -91,4 +91,11 @@ public class RobotsTest {
 		Robots c = new Robots("c", 3, 2, 5, 270);
 		assertTrue("Facing is " + c.facing() + " while it should be West",c.facing() == "West");
 		}
+	
+	@Test
+	public void testDistance() {
+		Robots c = new Robots("c", 3, 2, 5, 0);
+		double testDist = c.distance(5, 9);
+		assertTrue("Distance is " + testDist + " while it should be 51.0", c.distance(5, 9 )== 51.0);
+		}
 }
