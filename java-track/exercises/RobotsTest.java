@@ -68,4 +68,27 @@ public class RobotsTest {
 		assertTrue("The new orientation is " + c.getOrientation() + " while it should be 90", c.getOrientation() == 90);
 	}
 	
+	@Test
+	public void testFacing1() {
+		Robots c = new Robots("c", 3, 2, 5, 0);
+		assertTrue("Facing is " + c.facing() + " while it should be North",c.facing() == "North");
+		}
+	
+	@Test
+	public void testFacing2() {
+		Robots c = new Robots("c", 3, 2, 5, 90);
+		assertTrue("Facing is " + c.facing() + " while it should be East",c.facing() == "East");
+		}
+	
+	@Test
+	public void testFacing3() {
+		Robots c = new Robots("c", 3, 2, 5, 180);
+		assertTrue("Facing is " + c.facing() + " while it should be South", c.facing() == "South");
+		}
+	
+	@Test
+	public void testFacing4() {
+		Robots c = new Robots("c", 3, 2, 5, 270);
+		assertTrue("Facing is " + c.facing() + " while it should be West",c.facing() == "West");
+		}
 }
