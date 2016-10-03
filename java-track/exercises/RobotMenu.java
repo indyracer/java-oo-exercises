@@ -54,7 +54,7 @@ public class RobotMenu {
 		int selection = s.nextInt();
 		//validate input
 		while(selection < 0 || selection > 6)
-		
+
 		{
 			System.out.println("Invalid selection, please try again:  ");
 			selection = s.nextInt();
@@ -67,32 +67,45 @@ public class RobotMenu {
 	public void processInput(int selection){
 		//processing of the input from the menu
 
-		//declarations
+		if(selection == 1)
+		{
+			createRobot();
+		}
+		else if(selection == 2)
+		{
+			displayRobots();
+		}
 
-			String name;
-			int posX;
-			int posY;
-			int speed;
-			int orientation;
-		
-			{
-				if(selection == 1){
-				System.out.println("Enter a name for the robot: ");
-				name = s.next();
-				System.out.println("Enter an x position for the robot:  ");
-				posX = s.nextInt();
-				System.out.println("Enter a y position for the robot:  ");
-				posY = s.nextInt();
-				System.out.println("Enter a speed for the robot:  ");
-				speed = s.nextInt();
-				System.out.println("Enter an orientation for the robot(0 = North, 90 = East, 180 = South, 270 = West):  ");
-				orientation = s.nextInt();
+	}
 
-				new Robots(name, posX, posY, speed, orientation);
-			}
-				
-				//Continue with Display list of robots, options 2
 
+	public void createRobot()
+	{
+		//creates new Robot		
+		System.out.println("Enter a name for the robot: ");
+		String name = s.next();
+
+		System.out.println("Enter an x position for the robot:  ");
+		int posX = s.nextInt();
+
+		System.out.println("Enter a y position for the robot:  ");
+		int posY = s.nextInt();
+
+		System.out.println("Enter a speed for the robot:  ");
+		int speed = s.nextInt();
+
+		System.out.println("Enter an orientation for the robot(0 = North, 90 = East, 180 = South, 270 = West):  ");
+		int orientation = s.nextInt();
+
+		robots.add(new Robots(name, posX, posY, speed, orientation));
+						
+	}
+	
+	public void displayRobots()
+	{
+		for(int i = 0; i < robots.size(); i++)
+		{
+			System.out.println((i+1) + ".)" + robots.get(i));
 		}
 	}
 }
