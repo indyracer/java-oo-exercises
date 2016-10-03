@@ -20,6 +20,14 @@ public class RobotMenu {
 	private Scanner s;
 
 
+	public RobotMenu()
+	//Constructor statements:  make sure instance variables have values.
+	{
+		s = new Scanner(System.in);
+		robots = new ArrayList<Robots>();
+	}
+
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//bring up menu and asks for option
@@ -32,13 +40,6 @@ public class RobotMenu {
 	}
 
 
-	public RobotMenu()
-	//Constructor statements:  make sure instance variables have values.
-	{
-		s = new Scanner(System.in);
-		robots = new ArrayList<Robots>();
-	}
-
 	public int startMenu()
 	//display menu
 	{
@@ -49,6 +50,7 @@ public class RobotMenu {
 		System.out.println("4. Rotate a robot");
 		System.out.println("5. Compute the distance between two robots");
 		System.out.println("6. Exit");
+		System.out.println();
 		System.out.println("Please select an option:  ");
 		//takes in the selection
 		int selection = s.nextInt();
@@ -124,6 +126,7 @@ public class RobotMenu {
 
 	public void createRobot()
 	{
+		System.out.println(); //for formatting purposes
 		//creates new Robot		
 		System.out.println("Enter a name for the robot: ");
 		String name = s.next();
@@ -139,6 +142,8 @@ public class RobotMenu {
 
 		System.out.println("Enter an orientation for the robot(0 = North, 90 = East, 180 = South, 270 = West):  ");
 		int orientation = s.nextInt();
+		
+		System.out.println();
 
 		robots.add(new Robots(name, posX, posY, speed, orientation));
 
