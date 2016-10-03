@@ -97,6 +97,16 @@ public class RobotMenu {
 			System.out.println("The robot is now facing " + c.facing());
 			System.out.println();
 		}
+		else if (selection == 5)
+		{
+			displayRobots();
+			System.out.println("Please select the first robot:  ");
+			Robots c = selectRobots();
+			System.out.println("Please select the second robot:  ");
+			Robots d = selectRobots();
+			
+			System.out.println("The distance between the 2 robots is " + c.distance(d.getPosX(), d.getPosY()));
+			}
 
 	}
 
