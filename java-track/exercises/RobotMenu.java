@@ -84,6 +84,19 @@ public class RobotMenu {
 			System.out.println("The robot is now located at x position " + c.getPosX()+ " and y position " + c.getPosY());
 			System.out.println();
 		}
+		else if (selection == 4)
+		{
+			displayRobots();
+			Robots c = selectRobots();
+			
+			System.out.println("How much would you like to rotate (in multiples of 90)?  ");
+			int rotate = s.nextInt();
+			
+			c.changeOrientation(rotate);
+			
+			System.out.println("The robot is now facing " + c.facing());
+			System.out.println();
+		}
 
 	}
 
