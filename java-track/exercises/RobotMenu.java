@@ -100,13 +100,13 @@ public class RobotMenu {
 		else if (selection == 5)
 		{
 			displayRobots();
-			System.out.println("Please select the first robot:  ");
 			Robots c = selectRobots();
-			System.out.println("Please select the second robot:  ");
 			Robots d = selectRobots();
 			
 			System.out.println("The distance between the 2 robots is " + c.distance(d.getPosX(), d.getPosY()));
+			System.out.println();
 			}
+		
 
 	}
 
