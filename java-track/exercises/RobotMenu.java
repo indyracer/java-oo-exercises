@@ -75,9 +75,29 @@ public class RobotMenu {
 		{
 			displayRobots();
 		}
+		else if (selection == 3)
+		{
+			displayRobots();
+			Robots c = selectRobots();
+					
+			c.move(c.getSpeed());
+			System.out.println("The robot is now located at x position " + c.getPosX()+ " and y position " + c.getPosY());
+			System.out.println();
+		}
 
 	}
 
+	public Robots selectRobots()
+	{
+		System.out.println("Please select a Robot:  ");
+		int selection = s.nextInt();
+		while(selection < 1 || selection > robots.size())
+		{
+			System.out.println("Invalid selection, please try again:  ");
+			selection = s.nextInt();
+		}
+		return robots.get(selection - 1);
+	}
 
 	public void createRobot()
 	{
@@ -98,15 +118,18 @@ public class RobotMenu {
 		int orientation = s.nextInt();
 
 		robots.add(new Robots(name, posX, posY, speed, orientation));
-						
+
 	}
-	
+
 	public void displayRobots()
 	{
 		for(int i = 0; i < robots.size(); i++)
 		{
 			System.out.println((i+1) + ".)" + robots.get(i));
+			System.out.println();
 		}
 	}
+
+
 }
 

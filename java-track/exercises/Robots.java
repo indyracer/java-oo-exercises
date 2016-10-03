@@ -59,22 +59,22 @@ public class Robots {
 		return this.posY;
 	}
 
-	public void move (int speed){
+	public int move (int speed){
 		if(this.orientation == 0){
 			//add speed to y position
-			this.posY = this.posY + speed;
+			return this.posY = this.posY + speed;
 		}
 		else if(this.orientation == 180){
 			//Subtract speed from y position
-			this.posY = this.posY - speed;
+			return this.posY = this.posY - speed;
 		}
 		else if(this.orientation == 90){
 			//add speed to x position
-			this.posX = this.posX + speed;
+			return this.posX = this.posX + speed;
 		}
 		else{
 			//assume orientation is 270, subtract speed from x position
-			this.posX = this.posX - speed;
+			return this.posX = this.posX - speed;
 		}
 		
 	}
