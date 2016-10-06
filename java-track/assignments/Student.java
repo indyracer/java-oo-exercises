@@ -112,19 +112,19 @@ public class Student {
 		
 	}
 	
-	public int computeTuition()
+	public double computeTuition()
 	{
-		int fullSemCost = 20000;
-		double proRate = 1333;
+		double fullSemCost = 20000;
+		double proRate = 1333.33;
 		//determine left over semester credits
-		int leftOverSems = getCredits() % 15;
+		double leftOverSems = getCredits() % 15;
 		//determine number of full semesters
-		int fullSems = getCredits() / 15;
+		double fullSems = getCredits() / 15;
 		
-		int fullCost = fullSemCost * fullSems;
+		double fullCost = fullSemCost * fullSems;
 		double proRateCost = leftOverSems * proRate;
 		
-		return (int) (fullCost + proRateCost);
+		return fullCost + proRateCost;
 		
 		
 	}
