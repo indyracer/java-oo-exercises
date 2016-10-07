@@ -62,7 +62,38 @@ public class Course {
 
 	}
 	
+	public void generateRoster(Course courseName)
+	{
+		//run through arraylist and print the names
+		for(int i = 0; i < this.classRoster.size(); i++)
+		{
+			String name = this.classRoster.get(i).getName();
+			System.out.println(name);
+		}
+		
+	}
 	
+	public double averageGPA()
+	{
+		//need to get the GPA for each person in the course
+		double totalGPA = 0;
+		for(int i = 0; i < classRoster.size(); i++)
+		{
+			double studentGPA = this.classRoster.get(i).getGPA();
+			totalGPA = totalGPA + studentGPA;
+		}
+		
+		return totalGPA / classRoster.size();
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Course [courseName=" + courseName + ", credits=" + credits + ", numSeatsRemain=" + numSeatsRemain
+				+ ", classRoster=" + classRoster + "]";
+	}
+
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
