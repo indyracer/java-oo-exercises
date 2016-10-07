@@ -32,6 +32,7 @@ public class Student {
 		this.studentID = studentId;
 	}
 	
+	
 	public int getCredits() {
 		return this.credits;
 	}
@@ -42,10 +43,6 @@ public class Student {
 
 	public double getGPA() {
 		
-		System.out.println((getCredits()*1000.0)/1000.0);
-		System.out.println(totalQualityScore());
-		this.gpa = Math.round(totalQualityScore() / (double)getCredits() * 1000.0) / 1000.0;
-		//this.gpa = Math.round((this.gpa * 1000.0)/1000.0);
 		return this.gpa;
 	}
 
@@ -109,7 +106,7 @@ public class Student {
 		double qualityScore = grade * credits;
 		this.credits = (int) (this.credits + credits);
 		this.totalQualityScore = this.totalQualityScore + (double)qualityScore;
-		
+		this.gpa = Math.round(totalQualityScore() / (double)getCredits() * 1000.0) / 1000.0;
 	}
 	
 	public double computeTuition()
@@ -128,6 +125,37 @@ public class Student {
 		
 		
 	}
+	
+	public Student createLegacy(Student s, Student t)
+	{
+		//create name:  first name = p1 full name, last name = p2 fullname
+		String legacyFirstName = s.getName();
+		String legacyLastName = t.getName();
+		
+		//ID is sum of parents ID
+		int legacyID = s.getStudentID() + t.getStudentID();
+		
+		//GPA is average of parents GPA
+		double legacyGPA = (s.getGPA() + t.getGPA()) / 2.0;
+		legacyGPA = (legacyGPA * 1000.0) / 1000.0;
+		
+		//Credits = the max of the parents credits
+		int legacyCredits;
+		if(s.getCredits() > t.getCredits())
+		{
+			legacyCredits = s.getCredits();
+		}
+		else
+		{
+			legacyCredits = t.getCredits();
+		}
+		
+		Student baby = new Student(legacyFirstName, legacyLastName, legacyID);
+		baby.setCredits(legacyCredits);
+		baby.setGPA(legacyGPA);
+		
+		return baby;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -136,6 +164,14 @@ public class Student {
 		System.out.println(bob.getGPA());
 		System.out.println(bob.getClassStanding());
 		System.out.println(bob.computeTuition());
+		Student susan = new Student("Susan", "Lipstiz", 3241);
+		susan.submitGrade(4, 15);
+		bob.createLegacy(bob, susan);
+		System.out.println(bob.createLegacy(bob, susan));
+		System.out.println(susan.getCredits());
+		System.out.println(susan.getGPA());
+		
+		
 		
 	}
 
