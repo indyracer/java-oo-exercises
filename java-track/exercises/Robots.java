@@ -11,8 +11,8 @@ public class Robots {
 	*/
 	
 	private String name;
-	private int posX;
-	private int posY;
+	protected int posX;
+	protected int posY;
 	private int speed;
 	private int orientation;
 	
@@ -57,6 +57,15 @@ public class Robots {
 	
 	public int getPosY(){
 		return this.posY;
+	}
+	
+	
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+	public void setPosY(int posY) {
+		this.posY = posY;
 	}
 
 	public int move (int speed){
