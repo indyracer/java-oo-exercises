@@ -13,6 +13,7 @@ public class Course {
 	private int credits;
 	private int numSeatsRemain;
 	private ArrayList<Student> classRoster;	
+	private static ArrayList<Course> courseList = new ArrayList<Course>();
 	
 	public Course(String courseName, int credits, int numSeatsRemain) {
 		super();
@@ -20,12 +21,18 @@ public class Course {
 		this.credits = credits;
 		this.numSeatsRemain = numSeatsRemain;
 		this.classRoster = new ArrayList<Student>();
+		courseList.add(this);
+		
+		
 		}
 	
+	public static ArrayList getAllCourses(){
+		return courseList;
+	}
 	
 	
 	public String getName() {
-		return courseName;
+		return this.courseName;
 	}
 
 	public int getCredits() {
@@ -97,7 +104,11 @@ public class Course {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Course test1 = new Course("english", 3, 20);
+		Course test2 = new Course("math", 4, 20);
+		
+		System.out.println(courseList);
+		
 	}
 
 }

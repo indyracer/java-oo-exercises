@@ -126,7 +126,7 @@ public class Student {
 		
 	}
 	
-	public Student createLegacy(Student s, Student t)
+	public static Student createLegacy(Student s, Student t)
 	{
 		//create name:  first name = p1 full name, last name = p2 fullname
 		String legacyFirstName = s.getName();
