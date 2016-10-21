@@ -130,10 +130,15 @@ public class Javagram {
 			filters = new ArrayList<Filter>();	
 			Filter blue = new BlueFilter();
 			Filter invert = new InvertFilter();
+			Filter red = new RedFilter();
+			Filter grayscale = new GrayscaleFilter();
+			
 
 		//ArrayList<Filter> menu = new ArrayList<Filter>();
 		filters.add(blue);
 		filters.add(invert);
+		filters.add(red);
+		filters.add(grayscale);
 
 		System.out.println("Please chose the number of the filter to apply");
 		for (int i = 0; i < filters.size(); i++)
