@@ -32,14 +32,16 @@ public class Javagram {
 		// Create the base path for images		
 		String[] baseParts = {System.getProperty("user.dir"), "images"};
 		String dir = String.join(File.separator, baseParts);
+		String imagePath = "path not set";
 		String relPath;
 		Picture picture = null;
 		Scanner in = new Scanner(System.in);
+		String absFileName = null;
 
 		// prompt user for image to filter and validate input
 		do {
 
-			String imagePath = "path not set";
+			imagePath = "path not set";
 
 			// try to open the file
 			try {
@@ -57,13 +59,13 @@ public class Javagram {
 			}
 
 		} 
-		
+
 		while(picture == null);
 
 		// TODO - prompt user for filter and validate input
 
 		Javagram fm = new Javagram();
-//		displayFilterMenu(in);
+		//		displayFilterMenu(in);
 
 		//validate int is returned
 		//set loop condition
@@ -87,89 +89,116 @@ public class Javagram {
 			}
 		}
 		while(valTest);	
-		
-			
 
 
 
 
-			// TODO - pass filter ID int to getFilter, and get an instance of Filter back 
-						
 
-			// filter and display image
-			Picture processed = filter.process(picture);
-			processed.show();
 
-			System.out.println("Image successfully filtered");
+		// TODO - pass filter ID int to getFilter, and get an instance of Filter back 
 
-			// save image, if desired
 
-			System.out.println("Save image to (relative to " + dir + ") (type 'exit' to quit w/o saving):");
-			String fileName = in.next();
+		// filter and display image
+		Picture processed = filter.process(picture);
+		processed.show();
 
-			// TODO - if the user enters the same file name as the input file, confirm that they want to overwrite the original
+		System.out.println("Image successfully filtered");
 
-			if (fileName.equals("exit")) {
-				System.out.println("Image not saved");
-			} else {
-				String absFileName = dir + File.separator + fileName;
+		// save image, if desired
+
+		System.out.println("Save image to (relative to " + dir + ") (type 'exit' to quit w/o saving):");
+		String fileName = in.next();
+
+		// TODO - if the user enters the same file name as the input file, confirm that they want to overwrite the original
+
+		if (fileName.equals("exit")) {
+			System.out.println("Image not saved");
+
+
+		} else {
+			absFileName = dir + File.separator + fileName;
+		}
+		/*processed.save(absFileName);
+				System.out.println("Image saved to " + absFileName);
+			}	*/
+
+		if(absFileName == imagePath)
+		{
+			System.out.println("There is already an image with that name.  Do you want to overwrite with the new image?  Y/N: ");
+			String overwrite = in.next();
+
+			if(overwrite == "Y" || overwrite == "y")
+			{
 				processed.save(absFileName);
 				System.out.println("Image saved to " + absFileName);
-			}	
-
-			// close input scanner
-			in.close();
-		
-		
+			} else
+			{
+				System.out.println("Please rename your file");
+				fileName = in.next();
+				processed.save(absFileName);
+				System.out.println("Image saved to " + absFileName);
+			}
+		} else{
+			processed.save(absFileName);
+			System.out.println("Image saved to " + absFileName);
+		}
+		// close input scanner
+		in.close();
 	}
 
 	
-	private static int displayFilterMenu(Scanner in)
+
+
+
+
+
+
+private static int displayFilterMenu(Scanner in)
+{
+	//to clear array for each call
+	filters = new ArrayList<Filter>();	
+	Filter blue = new BlueFilter();
+	Filter invert = new InvertFilter();
+	Filter red = new RedFilter();
+	Filter grayscale = new GrayscaleFilter();
+
+
+	//ArrayList<Filter> menu = new ArrayList<Filter>();
+	filters.add(blue);
+	filters.add(invert);
+	filters.add(red);
+	filters.add(grayscale);
+
+	System.out.println("Please chose the number of the filter to apply");
+	for (int i = 0; i < filters.size(); i++)
 	{
-			//to clear array for each call
-			filters = new ArrayList<Filter>();	
-			Filter blue = new BlueFilter();
-			Filter invert = new InvertFilter();
-			Filter red = new RedFilter();
-			Filter grayscale = new GrayscaleFilter();
-			
-
-		//ArrayList<Filter> menu = new ArrayList<Filter>();
-		filters.add(blue);
-		filters.add(invert);
-		filters.add(red);
-		filters.add(grayscale);
-
-		System.out.println("Please chose the number of the filter to apply");
-		for (int i = 0; i < filters.size(); i++)
-		{
-			System.out.println(i + " " + filters.get(i));
-		}
-
-
-		//takes in the selections
-		int selection = in.nextInt();
-		return selection;
+		System.out.println(i + " " + filters.get(i));
 	}
 
-	// TODO - refactor this method to accept an int parameter, and return an instance of the Filter interface
+
+	//takes in the selections
+	int selection = in.nextInt();
+	return selection;
+}
+
+// TODO - refactor this method to accept an int parameter, and return an instance of the Filter interface
 
 
 
 
-	// TODO - refactor this method to thrown an exception if the int doesn't correspond to a filter
-	private static Filter getFilter(int selection) {
-		
-		int arrayIndex = selection;
-		Filter selectFilter = filters.get(arrayIndex);
-		return selectFilter;
+// TODO - refactor this method to thrown an exception if the int doesn't correspond to a filter
+private static Filter getFilter(int selection) {
+
+	int arrayIndex = selection;
+	Filter selectFilter = filters.get(arrayIndex);
+	return selectFilter;
 
 
 
 
-		// TODO - create some more filters, and add logic to return the appropriate one
-		//return new BlueFilter();
+	// TODO - create some more filters, and add logic to return the appropriate one
+	//return new BlueFilter();
 
-	}
+}
 
 }
