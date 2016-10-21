@@ -88,6 +88,10 @@ public class Robots {
 		
 	}
 	
+	public void setBehavior(doNextMove()){
+		
+	}
+	
 	public void changeOrientation(int rotate){
 		if(rotate == 90 && this.orientation == 270){
 			this.orientation = 0;
