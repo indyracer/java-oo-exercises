@@ -30,26 +30,11 @@ public class InvertFilter implements Filter {
 
 				//check for black and white pixels.  if found, invert rbg
 
-				if(r == 0 && g == 0 && b == 0)
-				{
-					r = 255;
-					g = 255;
-					b = 255;
+				
+					r = 255 - r;
+					g = 255 - g;
+					b = 255 - b;
 					processed.set(i, j, new Color(r, g, b));
-
-				}
-				if (r == 255 && g == 255 && b == 255)
-				{
-					r = 0;
-					g = 0;
-					b = 0;
-					processed.set(i,  j,  new Color(r, g, b));
-
-				}
-				else{
-					processed.set(i, j, c);
-
-				}
 
 
 			}

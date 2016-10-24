@@ -104,25 +104,52 @@ public class Javagram {
 
 		System.out.println("Image successfully filtered");
 
-		// save image, if desired
 
-		System.out.println("Save image to (relative to " + dir + ") (type 'exit' to quit w/o saving):");
-		String fileName = in.next();
 
 		// TODO - if the user enters the same file name as the input file, confirm that they want to overwrite the original
 
-		if (fileName.equals("exit")) {
-			System.out.println("Image not saved");
+		boolean saveVal = true;
+		do{
+			// save image, if desired
+
+			System.out.println("Save image to (relative to " + dir + ") (type 'exit' to quit w/o saving):");
+			String fileName = in.next();
+
+			if (fileName.equals("exit")) {
+				System.out.println("Image not saved");
+				saveVal = false;
 
 
-		} else {
-			absFileName = dir + File.separator + fileName;
+			} else {
+				absFileName = dir + File.separator + fileName;
+
+
+				if(absFileName.equals(imagePath))
+				{
+					System.out.println("That file already exists, do you want to overwrite? Y or N:  ");
+					String overWrite = in.next();
+					if(overWrite == "Y" || overWrite == "y")
+					{
+						processed.save(absFileName);
+						System.out.println("File has been saved to " + absFileName);
+						saveVal = false;
+					}
+
+				}
+				else
+				{
+					processed.save(absFileName);
+					System.out.println("File has been saved to " + absFileName);
+					saveVal = false;
+				}
+			}
 		}
-		/*processed.save(absFileName);
-				System.out.println("Image saved to " + absFileName);
-			}	*/
+		while(saveVal);
 
-		if(absFileName == imagePath)
+
+
+
+		/*if(absFileName == imagePath)
 		{
 			System.out.println("There is already an image with that name.  Do you want to overwrite with the new image?  Y/N: ");
 			String overwrite = in.next();
@@ -141,64 +168,64 @@ public class Javagram {
 		} else{
 			processed.save(absFileName);
 			System.out.println("Image saved to " + absFileName);
-		}
+		}*/
 		// close input scanner
 		in.close();
 	}
 
-	
 
 
 
 
 
 
-private static int displayFilterMenu(Scanner in)
-{
-	//to clear array for each call
-	filters = new ArrayList<Filter>();	
-	Filter blue = new BlueFilter();
-	Filter invert = new InvertFilter();
-	Filter red = new RedFilter();
-	Filter grayscale = new GrayscaleFilter();
 
-
-	//ArrayList<Filter> menu = new ArrayList<Filter>();
-	filters.add(blue);
-	filters.add(invert);
-	filters.add(red);
-	filters.add(grayscale);
-
-	System.out.println("Please chose the number of the filter to apply");
-	for (int i = 0; i < filters.size(); i++)
+	private static int displayFilterMenu(Scanner in)
 	{
-		System.out.println(i + " " + filters.get(i));
+		//to clear array for each call
+		filters = new ArrayList<Filter>();	
+		Filter blue = new BlueFilter();
+		Filter invert = new InvertFilter();
+		Filter red = new RedFilter();
+		Filter grayscale = new GrayscaleFilter();
+
+
+		//ArrayList<Filter> menu = new ArrayList<Filter>();
+		filters.add(blue);
+		filters.add(invert);
+		filters.add(red);
+		filters.add(grayscale);
+
+		System.out.println("Please chose the number of the filter to apply");
+		for (int i = 0; i < filters.size(); i++)
+		{
+			System.out.println(i + " " + filters.get(i));
+		}
+
+
+		//takes in the selections
+		int selection = in.nextInt();
+		return selection;
 	}
 
-
-	//takes in the selections
-	int selection = in.nextInt();
-	return selection;
-}
-
-// TODO - refactor this method to accept an int parameter, and return an instance of the Filter interface
+	// TODO - refactor this method to accept an int parameter, and return an instance of the Filter interface
 
 
 
 
-// TODO - refactor this method to thrown an exception if the int doesn't correspond to a filter
-private static Filter getFilter(int selection) {
+	// TODO - refactor this method to thrown an exception if the int doesn't correspond to a filter
+	private static Filter getFilter(int selection) {
 
-	int arrayIndex = selection;
-	Filter selectFilter = filters.get(arrayIndex);
-	return selectFilter;
-
-
+		int arrayIndex = selection;
+		Filter selectFilter = filters.get(arrayIndex);
+		return selectFilter;
 
 
-	// TODO - create some more filters, and add logic to return the appropriate one
-	//return new BlueFilter();
 
-}
+
+		// TODO - create some more filters, and add logic to return the appropriate one
+		//return new BlueFilter();
+
+	}
 
 }
