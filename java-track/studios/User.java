@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-public class User {
+public class User extends Entity {
 	
 	/*
 	 * User has
@@ -15,6 +15,8 @@ public class User {
 	
 	public User(String username, String password)
 	{
+		//need to figure out the how to implement the super()
+		super();
 		this.username = username;
 		this.password = hashPassword(password);
 		userList.add(this);
