@@ -4,11 +4,12 @@ public abstract class Entity {
 
 
 	private final int uid;
-	private static ArrayList<Integer> userIds = new ArrayList();
+	private static ArrayList<Entity> userIds = new ArrayList<Entity>();
 
-	public Entity(int uid){
-		//validate that uid is not a negative number
-		int valUid = uid;
+	public Entity(){
+	/*	//validate that uid is not a negative number
+		
+		
 		if(valUid < 0){
 			//assign new positive int by multiply by -1
 			valUid = valUid * -1;
@@ -18,28 +19,38 @@ public abstract class Entity {
 		int newUid = 0;
 		for(int i = 0; i < userIds.size(); i++)
 		{
-			if(userIds.get(i) == valUid)
+			if(userIds.get(i).equals(valUid))
 			{
 				newUid = userIds.size() + 1;
 			}
 		}
-		
+		//means that dup number has been found
 		if(newUid > 0)
 		{
-			this.uid = newUid;
+			uid = newUid;
 		}
 		else
+		//means number wasn't not found in arrayList and sets the uid	
 		{
-			this.uid = valUid;
+			uid = valUid;
 		}
+		
+		userIds.add(this);*/
+		
+		uid = userIds.size() + 1;
+		userIds.add(this);
 		
 		
 
 	}
 
-
 	public int getUid() {
-		return this.uid;
+		return uid;
+	}
+	
+	public static int nextId()
+	{
+		return userIds.size() + 1;
 	}
 
 
