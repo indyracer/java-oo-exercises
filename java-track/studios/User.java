@@ -79,6 +79,8 @@ public class User extends Entity {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		User bob = new User("bob", "test");
+		System.out.println(bob.getUid());
 		
 	}
 

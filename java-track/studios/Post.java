@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class Post {
+public class Post extends Entity{
 	
 	/*
 	 * properties
@@ -19,6 +19,7 @@ public class Post {
 	
 	public Post(String title, String author, String body)
 	{
+		super();
 		title = this.title;
 		author = this.author;
 		body = this.body;

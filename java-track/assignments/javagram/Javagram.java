@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-
+import java.util.*;
 public class Javagram {
 
 	/*
@@ -83,10 +83,21 @@ public class Javagram {
 				valTest = false;
 
 			}
-			catch (Exception e ){
-				//what happens when an exeption happens
-				System.out.println("IndexOutOfBounds Exception");
+			catch (InputMismatchException string ){
+				//what happens when an exeption happens invalid input
+				
+				System.out.println("InputMismatchException, please input a number");
+				in.next();
+				
 			}
+			
+			catch (Exception e ){
+				//what happens when an exeption happens invalid int
+				System.out.println("IndexOutOfBounds Exception");
+				
+			}
+			
+			
 		}
 		while(valTest);	
 

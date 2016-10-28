@@ -38,9 +38,7 @@ public abstract class Entity {
 		userIds.add(this);*/
 		
 		uid = userIds.size() + 1;
-		userIds.add(this);
-		
-		
+		userIds.add(this);		
 
 	}
 
