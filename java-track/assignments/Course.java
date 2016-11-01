@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 public class Course {
 	
 	//Course has
@@ -28,6 +29,27 @@ public class Course {
 	
 	public static ArrayList getAllCourses(){
 		return courseList;
+	}
+	
+	
+	@Override
+	public boolean equals(Object o){
+		//self check
+		if(this == o)
+			return true;
+		
+		//null check
+		if(o == null)
+			return false;
+		
+		//type check and cast
+		if(getClass() != o.getClass())
+			return false;
+		
+		Course course= (Course) o;
+		
+		//field comparison
+		return Objects.equals(courseName, course.courseName) && Objects.equals(credits, course.credits) && Objects.equals(numSeatsRemain, course.numSeatsRemain);
 	}
 	
 	

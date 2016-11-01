@@ -23,6 +23,8 @@ public class UserAndBlogzTest {
 		assertTrue("The username isn't valid", b);
 
 	}
+	
+	@
 
 
 }

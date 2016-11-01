@@ -1,3 +1,4 @@
+import java.util.Objects;
 
 public class Student {
 	
@@ -32,6 +33,26 @@ public class Student {
 		this.studentID = studentId;
 	}
 	
+	
+	@Override
+	public boolean equals(Object o){
+		//self check
+		if(this == o)
+			return true;
+		
+		//null check
+		if(o == null)
+			return false;
+		
+		//type check and cast
+		if(getClass() != o.getClass())
+			return false;
+		
+		Student student = (Student) o;
+		
+		//field comparison
+		return Objects.equals(firstName, student.firstName) && Objects.equals(lastName, student.lastName) && Objects.equals(studentID, student.studentID);
+	}
 	
 	public int getCredits() {
 		return this.credits;

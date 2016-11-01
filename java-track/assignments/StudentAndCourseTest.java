@@ -3,7 +3,12 @@ import org.junit.Test;
 import junit.framework.TestCase;
 
 public class StudentAndCourseTest extends TestCase {
-
+	//for equality testing
+	Student student1 = new Student("Bob", "Cohen", 1);
+	Student student2= new Student("Bob", "Cohen", 1);
+	Student student3= new Student("Bob", "Cohen", 1);
+	
+	
 	String s1 = "either your getName() method isn't doing its job or you're not " +
 			"setting your instance variables properly";
 	String s2 = "either your getGPA() method is not doing its job or you're not " +
@@ -35,7 +40,44 @@ public class StudentAndCourseTest extends TestCase {
 			assertEquals(s5, "Freshman", s3.getClassStanding());
 		}
 	}
-
+	
+	@Test
+	public void testStudentEqualsOperator(){
+		
+		
+		assertTrue(student1 == student1);
+		assertFalse(student1 == student2);
+	}
+	
+	@Test
+	public void testStudentSelfEquals(){
+		assertTrue(student1.equals(student1));
+		assertTrue(student2.equals(student2));
+		assertTrue(student3.equals(student3));
+		
+	}
+	
+	@Test
+	public void testStudentValueCheck(){
+		assertTrue(student1.equals(student2));
+		assertTrue(student2.equals(student1));
+		assertTrue(student1.equals(student3));
+		assertTrue(student3.equals(student1));
+	}
+	
+	@Test
+	public void testStudentTransivity(){
+		assertTrue(student1.equals(student2));
+		assertTrue(student2.equals(student3));
+		assertTrue(student3.equals(student1));
+	}
+	
+	@Test
+	public void testStudentNull(){
+		assertFalse(student1.equals(null));
+	}
+	
+	
 	@Test
 	public void testGetClassStanding() {
 		Student s = new Student("D", "S", 1);
@@ -147,6 +189,50 @@ public class StudentAndCourseTest extends TestCase {
 	// TESTING COURSE CLASS HERE . . . FEEL FREE TO WRITE YOUR OWN, BUT DON'T CHANGE THIS ONE
 	// once again, we are watching you
 
+	//courses for equals testing
+	Course course1 = new Course("test", 1, 2);
+	Course course2 = new Course("test", 1, 2);
+	Course course3 = new Course("test", 1 ,2);
+	
+	@Test
+	public void testCourseEqualsOperator(){
+		
+		
+		assertTrue(course1 == course1);
+		assertFalse(course1 == course2);
+	}
+	
+	@Test
+	public void testCourseSelfEquals(){
+		assertTrue(course1.equals(course1));
+		assertTrue(course2.equals(course2));
+		assertTrue(course3.equals(course3));
+		
+	}
+	
+	@Test
+	public void testCourseValueCheck(){
+		assertTrue(course1.equals(course2));
+		assertTrue(course2.equals(course2));
+		assertTrue(course1.equals(course3));
+		assertTrue(course3.equals(course1));
+	}
+	
+	@Test
+	public void testCourseTransivity(){
+		assertTrue(course1.equals(course2));
+		assertTrue(course2.equals(course3));
+		assertTrue(course3.equals(course1));
+	}
+	
+	@Test
+	public void testCourseNull(){
+		assertFalse(course1.equals(null));
+	}
+	
+	
+	
+	
 	@Test
 	public void testCourseInit() {
 		Course c = new Course("CSE131", 1, 2);
