@@ -1,18 +1,19 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class User extends Entity {
-	
+
 	/*
 	 * User has
 	 * username
 	 * password
 	 */
-	
+
 	private String username;
 	private String password;
 	private static ArrayList<User> userList = new ArrayList<User>();
-	
+
 	public User(String username, String password)
 	{
 		//need to figure out the how to implement the super()
@@ -21,14 +22,15 @@ public class User extends Entity {
 		this.password = hashPassword(password);
 		userList.add(this);
 	}
-	
+
+
 	private static String hashPassword(String password)
 	{
 		String hashPassword = password;
 		return hashPassword;
 	}
-	
-	
+
+
 	public String getUsername() {
 		return username;
 	}
@@ -44,7 +46,7 @@ public class User extends Entity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public Boolean isValidPassword(String password)
 	{
 		if(this.password != hashPassword(password))
@@ -56,12 +58,12 @@ public class User extends Entity {
 			return true;
 		}
 	}
-	
+
 	public static Boolean isValidUsername(String username)
 	{
 		String regex = "[a-zA-Z][a-zA-Z0-9_-]{4,11}";
 		Boolean test = Pattern.matches(regex, username);
-		
+
 		if(test == true)
 		{
 			return true;
@@ -71,7 +73,7 @@ public class User extends Entity {
 			return false;
 		}
 	}
-	
+
 	public int getArraySize()
 	{
 		return userList.size();
@@ -81,7 +83,7 @@ public class User extends Entity {
 		// TODO Auto-generated method stub
 		User bob = new User("bob", "test");
 		System.out.println(bob.getUid());
-		
+
 	}
 
 }

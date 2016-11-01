@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public abstract class Entity {
 
@@ -49,6 +50,26 @@ public abstract class Entity {
 	public static int nextId()
 	{
 		return userIds.size() + 1;
+	}
+	
+	
+	public boolean equal(Object o){
+		//self check
+		if(this == o)
+			return true;
+
+		//null check
+		if(o == null)
+			return false;
+
+		//type check and cast
+		if(getClass() != o.getClass())
+			return false;
+
+		User user= (User) o;
+
+		//field comparison
+		return Objects.equals(userIds, user.getUid());
 	}
 
 
